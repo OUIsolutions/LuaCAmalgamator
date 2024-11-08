@@ -1,6 +1,7 @@
 # Prerequisites
 *.d
-
+dependencies
+darwin012.c
 # Object files
 *.o
 *.ko
