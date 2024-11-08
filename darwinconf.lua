@@ -1,6 +1,5 @@
 darwin.add_lua_file("types.lua")
-darwin.add_lua_code("private_my_project =  {}")
-darwin.add_lua_code("my_project = {}")
+darwin.add_lua_code("private_lua_c_amalgamator = {}")
 
 local concat_path = true
 local src_files = dtw.list_files_recursively("lua_code", concat_path)
@@ -13,15 +12,15 @@ end
 
 darwin.c_include("cinterop/main_lib.c")
 darwin.load_lualib_from_c(
-    "luaopen_private_my_project_cinterop",
-    "private_my_project_cinterop"
+    "luaopen_private_lua_c_amalgamator_cinterop",
+    "private_lua_c_amalgamator_cinterop"
 )
 -- we dont need to include ,since its already imported by "cinterop/main_lib.c"
 local include_lua_cembed = false
 darwin.generate_c_lib_output(
-    "my_project",
-    "my_project",
-    "my_project.c",
+    "lua_c_amalgamator",
+    "private_lua_c_amalgamator",
+    "private_lua_c_amalgamator.c",
     include_lua_cembed
 )
-os.execute(" gcc -Wall -shared -fpic -o my_project.so  my_project.c")
+os.execute(" gcc -Wall -shared -fpic -o private_lua_c_amalgamator.so  private_lua_c_amalgamator.c")
