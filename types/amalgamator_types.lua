@@ -5,7 +5,8 @@
 
 ---@class Amalgamator
 ---@field generate_amalgamation fun(filename:string,max_content_size:number | nil,max_recursion:number|nil)
-
+---@field ONE_MB number
+---@field ONE_BYTE number
 
 ---@type Amalgamator
 private_lua_c_amalgamator = private_lua_c_amalgamator

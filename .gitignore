@@ -1,5 +1,10 @@
 # Prerequisites
 *.d
+debug.lua
+lua_c_amalgamator.c
+teste.lua
+cweb_studio
+saida.c
 dependencies
 darwin012.c
 # Object files
