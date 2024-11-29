@@ -53,3 +53,26 @@ the code return can be betwen
 |"include-perpetual"|  include the content, every time it founds it  |
 
 ## Unsing in Darwin
+if you want to add it inside darwin, you can generate a full static compilation
+following these:
+### Download the darwin version
+```shell
+curl -L https://github.com/OUIsolutions/LuaCAmalgamator/releases/download/0.001/lua_c_amalgamator_darwin_import.c  -o lua_c_amalgamator_darwin_import.c
+```
+then add the import to your **darwinconf.lua** file and the lib will be acessible as
+**camalgamator** object
+```lua
+darwin.c_include("lua_c_amalgamator_darwin_import.c")
+darwin.load_lualib_from_c(
+    "luaopen_lua_c_amalgamator",
+    "camalgamator"
+)
+```
+
+
+### Building From Scracth 
+if you want to build the project from scracth ,just  clone the repo and type:
+
+```shell
+sh install_dependencies.sh  && sh compiledarwin.sh  && ./darwin.o build 
+```
