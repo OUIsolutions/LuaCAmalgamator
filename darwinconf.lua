@@ -90,3 +90,4 @@ dtw.copy_any_overwriting("types/amalgamator_types.lua", "release/LuaCAmalgamator
 dtw.copy_any_overwriting("init.lua", "release/LuaCAmalgamator/init.lua")
 
 os.execute("gcc -shared -fpic release/lua_c_amalgamator_full.c -o release/LuaCAmalgamator/lua_c_amalgamator.so")
+os.execute("zip -r  release/LuaCAmalgamator.zip release/LuaCAmalgamator/")
