@@ -1,3 +1,25 @@
+local CAMALGAMATOR_CODE = "uhvartoqa652101l356"
+local CAMALGAMATOR_PATH = "dependencies/CAmalgamatorApiNoDependenciesIncluded.h"
+
+
+function generate_full_c()
+    private_darwin.resset_c()
+
+    darwin.add_c_file("citerop.c", true)
+    darwin.load_lualib_from_c(
+        "luaopen_private_lua_c_amalgamator_cinterop",
+        "private_lua_c_amalgamator_cinterop"
+    )
+
+    local full_clib = darwin.generate_c_lib_code({
+        libname = "lua_c_amalgamator",
+        object_export = "public_lua_c_amalgamator",
+        include_e_luacembed = false
+    })
+    full_clib = full_clib:gsub(CAMALGAMATOR_CODE, "#include")
+    dtw.write_file("release/lua_c_amalgamator_full.c", full_clib)
+end
+
 darwin.add_lua_code("public_lua_c_amalgamator = {}")
 
 local concat_path = true
@@ -7,21 +29,12 @@ for i = 1, #src_files do
     darwin.add_lua_code("-- file: " .. current .. "\n")
     darwin.add_lua_file(current)
 end
+darwin.generate_lua_output({ output_name = "debug.lua" })
 
-darwin.generate_lua_output("debug.lua")
---darwin.add_c_file("cinterop.c", true)
-
---darwin.load_lualib_from_c(
---    "luaopen_private_lua_c_amalgamator_cinterop",
---    "private_lua_c_amalgamator_cinterop"
---)
+--- we must format these , to avoid bugs on include
+local camalgamator_content = dtw.load_file(CAMALGAMATOR_PATH)
+camalgamator_content = camalgamator_content:gsub("#include", CAMALGAMATOR_CODE)
+dtw.write_file(CAMALGAMATOR_PATH, camalgamator_content)
 
 
-darwin.generate_c_lib_output({
-    libname = "lua_c_amalgamator",
-    object_export = "public_lua_c_amalgamator",
-    output_name = "lua_c_amalgamator.c",
-    include_e_luacembed = false
-
-})
---os.execute(" gcc -Wall -shared -fpic -o lua_c_amalgamator.so  lua_c_amalgamator.c")
+generate_full_c()

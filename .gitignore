@@ -1,6 +1,7 @@
 # Prerequisites
 *.d
 debug.lua
+release
 lua_c_amalgamator.c
 teste.lua
 cweb_studio
