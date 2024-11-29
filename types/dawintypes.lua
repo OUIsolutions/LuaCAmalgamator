@@ -23,15 +23,47 @@ PRIVATE_DARWIN_TYPES = PRIVATE_DARWIN_TYPES
 
 ---@alias DarwinGlobalMode "lua"| "c"
 
+---@class DarwinLuaGeneratorCodeProps
+---@field temp_shared_lib_dir string | nil
+
+---@class DarwinLuaGeneratorOutputProps
+---@field temp_shared_lib_dir string | nil
+---@field output_name string
+
+---@class DarwinCExecutableProps
+---@field temp_shared_lib_dir string | nil
+---@field include_lua_cembed boolean | nil
+
+---@class DarwinCOutputProps
+---@field temp_shared_lib_dir string | nil
+---@field include_lua_cembed boolean | nil
+---@field output_name string
+
+---@class DarwinClibProps
+---@field libname  string
+---@field object_export string
+---@field include_e_luacembed boolean | nil
+---@field temp_shared_lib_dir string | nil
+---@field shared_lib_embed_mode DarwinGlobalMode | nil
+
+---@class DarwinClibOutputProps
+---@field output_name string
+---@field libname  string
+---@field object_export string
+---@field include_e_luacembed boolean | nil
+---@field temp_shared_lib_dir string | nil
+---@field shared_lib_embed_mode DarwinGlobalMode | nil
+
+
 ---@class Darwin
 ---@field add_lua_code fun(code:string)
 ---@field add_lua_file fun(filename:string)
----@field generate_lua_code fun():string
----@field generate_lua_output fun(filename:string)
----@field generate_c_executable_code fun(include_e_luacembed:boolean | nil):string
----@field generate_c_executable_output fun(filename:string,include_e_luacembed:boolean | nil)
----@field generate_c_lib_code fun(libname:string,object_export:string,include_e_luacembed:boolean | nil):string
----@field generate_c_lib_output fun(libname:string,object_export:string,filename:string,include_e_luacembed:boolean | nil)
+---@field generate_lua_code fun(props: DarwinLuaGeneratorCodeProps | nil):string
+---@field generate_lua_output fun(props: DarwinLuaGeneratorOutputProps)
+---@field generate_c_executable_code fun(props : DarwinCExecutableProps | nil):string
+---@field generate_c_executable_output fun(props: DarwinCOutputProps)
+---@field generate_c_lib_code fun(props: DarwinClibProps):string
+---@field generate_c_lib_output fun(props:DarwinClibOutputProps)
 ---@field add_c_code fun (code:string)
 ---@field c_include fun (lib:string)
 ---@field add_c_internal fun(code:string)
@@ -39,8 +71,8 @@ PRIVATE_DARWIN_TYPES = PRIVATE_DARWIN_TYPES
 ---@field call_c_func fun(function_name:string)
 ---@field add_c_file fun (filename:string, folow_includes:boolean | nil, include_verifier:fun(import:string,path:string):boolean | nil)
 ---@field embed_global fun (name:string, var:any, mode:DarwinGlobalMode|nil)
-
-
+---@field embed_shared_libs fun( mode:DarwinGlobalMode|nil)
+---@field unsafe_add_lua_code_following_require fun(start_filename:string,shared_lib_import:boolean | nil)
 ---@type Darwin
 darwin = darwin
 
@@ -301,7 +333,19 @@ dtw = dtw
 ---@field name string
 ---@field callback fun()
 
+---@class PrivateDarwinModuleInternal
+---@field item string
+---@field content string
+
+---@class PrivateDarwinSHaredLib
+---@field sha_item string
+---@field content string
+---@field filename string
+
 ---@class PrivateDarwin
+---@field string string
+---@field table table
+---@field main fun()
 ---@field actions Actions[]
 ---@field is_inside fun(target_table:table,value:any):boolean
 ---@field main_lua_code string
@@ -350,7 +394,11 @@ dtw = dtw
 ---@field c_str_shas_code string
 ---@field generated_c_str_shas string[]
 ---@field globals_already_setted string[]
-
+---@field lua_modules PrivateDarwinModuleInternal[]
+---@field construct_possible_files string[]
+---@field shared_libs  PrivateDarwinSHaredLib[]
+---@field embed_shared_lib fun(filename:string):string
+---@field shared_libs_were_embed boolean
 ---@type PrivateDarwin
 private_darwin = private_darwin
 

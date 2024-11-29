@@ -6,7 +6,7 @@ teste.lua
 cweb_studio
 saida.c
 dependencies
-darwin012.c
+darwin0*
 # Object files
 *.o
 *.ko

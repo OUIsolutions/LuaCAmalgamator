@@ -1,4 +1,4 @@
----@class PrivateAmalgamator
+---@class PrivateAmalgamatorInterop
 ---@field generate_amalgamation_simple fun(filename:string,max_content:number,max_recursion:number)
 ---@field generate_amalgamation_complex fun(filename:string,max_content:number,max_recursion:number,generator_callback:fun(include:string,path:string):"dont-include"| "dont-change" | "include-once" | "include-perpetual"):string
 
@@ -10,7 +10,7 @@
 ---@field ONE_MB number
 ---@field ONE_BYTE number
 
----@type Amalgamator
+---@type PrivateAmalgamatorInterop
 private_lua_c_amalgamator = private_lua_c_amalgamator
 
 ---@type PrivateAmalgamator
