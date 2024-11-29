@@ -8,6 +8,7 @@ cweb_studio
 saida.c
 dependencies
 darwin0*
+LuaCAmalgamator
 # Object files
 *.o
 *.ko

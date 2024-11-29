@@ -1,7 +1,7 @@
 local CAMALGAMATOR_CODE = "uhvartoqa652101l356"
 local CAMALGAMATOR_PATH = "dependencies/CAmalgamatorApiNoDependenciesIncluded.h"
 dtw.remove_any("release")
-
+dtw.remove_any("LuaCAmalgamator")
 function generate_full_c()
     private_darwin.resset_c()
 
@@ -86,8 +86,8 @@ dtw.write_file(CAMALGAMATOR_PATH, camalgamator_content)
 generate_full_c()
 generate_darwin_import()
 generate_darwin_no_dependencie_not_included()
-dtw.copy_any_overwriting("types/amalgamator_types.lua", "release/LuaCAmalgamator/types.lua")
-dtw.copy_any_overwriting("init.lua", "release/LuaCAmalgamator/init.lua")
+dtw.copy_any_overwriting("types/amalgamator_types.lua", "LuaCAmalgamator/types.lua")
+dtw.copy_any_overwriting("init.lua", "LuaCAmalgamator/init.lua")
 
-os.execute("gcc -shared -fpic release/lua_c_amalgamator_full.c -o release/LuaCAmalgamator/lua_c_amalgamator.so")
-os.execute("zip -r  release/LuaCAmalgamator.zip release/LuaCAmalgamator/")
+os.execute("gcc -shared -fpic release/lua_c_amalgamator_full.c -o LuaCAmalgamator/lua_c_amalgamator.so")
+os.execute("zip -r  release/LuaCAmalgamator.zip LuaCAmalgamator/")
