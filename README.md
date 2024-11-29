@@ -76,3 +76,4 @@ if you want to build the project from scracth ,just  clone the repo and type:
 ```shell
 sh install_dependencies.sh  && sh compiledarwin.sh  && ./darwin.o build 
 ```
+it will generate all the outputs on **LuaCAmalgamator**  and **release**
