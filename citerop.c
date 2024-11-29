@@ -1,7 +1,7 @@
-#include "../dependencies/LuaCEmbed.h"
-#include "../dependencies/doTheWorld.h"
-#include "../dependencies/CTextEngine.h"
-#include "../dependencies/CAmalgamatorApiNoDependenciesIncluded.h"
+#include "dependencies/LuaCEmbed.h"
+#include "dependencies/doTheWorld.h"
+#include "dependencies/CTextEngine.h"
+#include "dependencies/CAmalgamatorApiNoDependenciesIncluded.h"
 
 
 LuaCEmbedResponse *private_lua_c_amalgamator_generate_amalgamation_simple(LuaCEmbed *args){
@@ -85,6 +85,5 @@ int luaopen_private_lua_c_amalgamator_cinterop(lua_State *state){
     LuaCEmbed * l = newLuaCEmbedLib(state);
     LuaCEmbed_add_callback(l,"generate_amalgamation_simple",private_lua_c_amalgamator_generate_amalgamation_simple);
     LuaCEmbed_add_callback(l,"generate_amalgamation_complex",private_lua_c_amalgamator_generate_amalgamation_complex);
-
     return LuaCembed_send_self_as_lib(l);
 }

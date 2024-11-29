@@ -1,6 +1,6 @@
 rm -rf dependencies
 mkdir dependencies
-curl -L https://github.com/OUIsolutions/Darwin/releases/download/0.012/darwin012.c -o darwin012.c
+curl -L https://github.com/OUIsolutions/Darwin/releases/download/0.013/darwin013.c -o darwin013.c
 curl -L https://github.com/OUIsolutions/LuaCEmbed/releases/download/v0.778/LuaCEmbed.h -o dependencies/LuaCEmbed.h
 
 #CAmalgamator

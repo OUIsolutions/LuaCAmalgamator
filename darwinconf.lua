@@ -1,4 +1,4 @@
-darwin.add_lua_code("private_lua_c_amalgamator = {}")
+darwin.add_lua_code("public_lua_c_amalgamator = {}")
 
 local concat_path = true
 local src_files = dtw.list_files_recursively("luacode", concat_path)
@@ -20,7 +20,7 @@ darwin.load_lualib_from_c(
 local include_lua_cembed = false
 darwin.generate_c_lib_output(
     "lua_c_amalgamator",
-    "private_lua_c_amalgamator",
+    "public_lua_c_amalgamator",
     "lua_c_amalgamator.c",
     include_lua_cembed
 )
