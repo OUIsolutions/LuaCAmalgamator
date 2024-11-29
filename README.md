@@ -18,7 +18,7 @@ local max_recursion = 100
 result = camalgamator.generate_amalgamation("main.c", max_content, max_recursion)
 io.open("out.c", "w"):write(result)
 
-``
+```
 
 ### Making a Amalgamation with validators
 if you want you can make a amalgamation using validators, to define behavior
