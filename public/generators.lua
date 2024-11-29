@@ -50,11 +50,27 @@ public_lua_c_amalgamator.generate_amalgamation_with_callback = function(filename
     if type(max_recursion) ~= "number" then
         error("max recursion its not a number")
     end
+    function veriifier_formmated(import, path)
+        local str_result = verifier_callback(import, path)
+        if str_result == "dont-include" then
+            return private_lua_c_amalgamator_cinterop.CAMALGAMATOR_DONT_INCLUDE
+        end
+        if str_result == "dont-change" then
+            return private_lua_c_amalgamator_cinterop.CAMALGAMATOR_DONT_CHANGE
+        end
+        if str_result == "include-once" then
+            return private_lua_c_amalgamator_cinterop.CAMALGAMATOR_INCLUDE_ONCE
+        end
+        if str_result == "include-perpetual" then
+            return private_lua_c_amalgamator_cinterop.CAMALGAMATOR_INCLUDE_PERPETUAL
+        end
+        error("result not in ['dont-include','dont-change','include-once','include-perpetual']")
+    end
 
     return private_lua_c_amalgamator_cinterop.generate_amalgamation_complex(
         filename,
         max_content_size,
         max_recursion,
-        verifier
+        veriifier_formmated
     )
 end
