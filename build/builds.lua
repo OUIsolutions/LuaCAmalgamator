@@ -2,7 +2,7 @@
 
 
 function create_start_project()
-    local project = darwin.create_project("lua_camalgamator")
+    local project = darwin.create_project("lua_c_amalgamator")
     project.add_lua_code("public_lua_c_amalgamator = {}")
     local concat_path = true
     local src_files = darwin.dtw.list_files_recursively("public", concat_path)
