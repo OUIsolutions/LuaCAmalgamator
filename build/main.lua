@@ -1,5 +1,5 @@
 CAMALGAMATOR_CODE = "32342jjressd"
-CAMALGAMATOR_PATH = "dependencies/CSilverChainApiNoDependenciesIncluded.h"
+CAMALGAMATOR_PATH = "dependencies/CAmalgamatorApiNoDependenciesIncluded.h"
 
 
 
@@ -17,11 +17,9 @@ function main()
     generate_darwin_import()
     generate_darwin_no_dependencie_not_included()
 
-    darwin.dtw.copy_any_overwriting("types/luaSilverCHain_types.lua", "LuaSilverChain/types.lua")
-    darwin.dtw.copy_any_overwriting("init.lua", "LuaSilverChain/init.lua")
-
-    os.execute("gcc -shared -fpic release/silverchain_full.c -o LuaSilverChain/silverchain.so")
-    os.execute("zip -r  release/LuaSilverChain.zip LuaSilverChain")
-
+    darwin.dtw.copy_any_overwriting("types/amalgamator_types.lua", "LuaCAmalgamator/types.lua")
+    darwin.dtw.copy_any_overwriting("init.lua", "LuaCAmalgamator/init.lua")
+    os.execute("gcc -shared -fpic release/lua_c_amalgamator_full.c -o LuaCAmalgamator/lua_c_amalgamator.so")
+    os.execute("zip -r  release/LuaCAmalgamator.zip LuaCAmalgamator/")
 
 end 
