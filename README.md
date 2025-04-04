@@ -1,6 +1,10 @@
 
 LuaCAmalgamator its a wrapper of the [CAmalgamator](https://github.com/OUIsolutions/CAmalgamator)
 project design to create amalgamations of C codes
+### Releases
+| Item | Description |
+|------|-------------|
+
 
 ### Install
 if you want to install , just type:
@@ -69,14 +73,15 @@ darwin.load_lualib_from_c(
 )
 ```
 
-
-### Building From Scracth 
-if you want to build the project from scracth ,just  clone the repo and type:
-
-```shell
-sh install_dependencies.sh  && sh compiledarwin.sh  && ./darwin.o build 
+## Building from Scratch
+if you want to build the code from scracth  you need to have [Darwin](https://github.com/OUIsolutions/Darwin) 
+installed on versio **0.020** and **Docker** our **Podman** installed on your machine.
+After install all dependecies,clone the repo on your machine , than run:
+```shel
+darwin run_blueprint build/ --mode folder
 ```
-it will generate all the outputs on **LuaCAmalgamator**  and **release**
+
+
 
 # Dependencies
 ## Darwin
