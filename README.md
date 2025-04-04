@@ -9,7 +9,7 @@ project design to create amalgamations of C codes
 ### Install
 if you want to install , just type:
 ```shell
-curl -L https://github.com/OUIsolutions/LuaCAmalgamator/releases/download/0.001/LuaCAmalgamator.zip -o LuaCAmalgamator.zip && unzip LuaCAmalgamator.zip && rm LuaCAmalgamator.zip
+curl -L https://github.com/OUIsolutions/LuaCAmalgamator/releases/download/0.0.3/LuaCAmalgamator.zip -o LuaCAmalgamator.zip && unzip LuaCAmalgamator.zip && rm LuaCAmalgamator.zip
 ```
 ### Making a Amalgamation
 
@@ -61,7 +61,7 @@ if you want to add it inside darwin, you can generate a full static compilation
 following these:
 ### Download the darwin version
 ```shell
-curl -L https://github.com/OUIsolutions/LuaCAmalgamator/releases/download/0.001/lua_c_amalgamator_darwin_import.c  -o lua_c_amalgamator_darwin_import.c
+curl -L https://github.com/OUIsolutions/LuaCAmalgamator/releases/download/0.0.3/lua_c_amalgamator_darwin_import.c  -o lua_c_amalgamator_darwin_import.c
 ```
 then add the import to your **darwinconf.lua** file and the lib will be acessible as
 **camalgamator** object
