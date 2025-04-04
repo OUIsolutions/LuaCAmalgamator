@@ -4,7 +4,7 @@ function Install_dependencies()
 
     local libs = {
         {url="https://github.com/OUIsolutions/LuaCEmbed/releases/download/v0.779/LuaCEmbed.h",path="dependencies/LuaCEmbed.h"},
-        {url="https://github.com/OUIsolutions/CAmalgamator/releases/download/0.001/CAmalgamatorApiNoDependenciesIncluded.h",path="dependencies/CAmalgamatorApiNoDependenciesIncluded.h"},
+        {url="https://github.com/OUIsolutions/CAmalgamator/releases/download/0.0.4/CAmalgamatorApiNoDependenciesIncluded.h",path="dependencies/CAmalgamatorApiNoDependenciesIncluded.h"},
         {url="https://github.com/OUIsolutions/CTextEngine/releases/download/v2.002/CTextEngine.h",path="dependencies/CTextEngine.h"},   
         {url="https://github.com/OUIsolutions/DoTheWorld/releases/download/v8.002/doTheWorld.h",path="dependencies/doTheWorld.h"},
         {url="https://github.com/OUIsolutions/C-Cli-Entry/releases/download/0.001/CliEntry.h",path="dependencies/CliEntry.h"},
