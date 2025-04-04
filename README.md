@@ -4,7 +4,10 @@ project design to create amalgamations of C codes
 ### Releases
 | Item | Description |
 |------|-------------|
-
+|[LuaCAmalgamator.zip](https://github.com/OUIsolutions/LuaCAmalgamator/releases/download/0.0.3/LuaCAmalgamator.zip)| zip with **.so** and init file |
+|[lua_c_amalgamator_darwin_import.c](https://github.com/OUIsolutions/LuaCAmalgamator/releases/download/0.0.3/lua_c_amalgamator_darwin_import.c)| the import file for darwin|
+|[lua_c_amalgamator_dependencie_not_included.c](https://github.com/OUIsolutions/LuaCAmalgamator/releases/download/0.0.3/lua_c_amalgamator_dependencie_not_included.c) | the import file for lua_c_amalgamator dependecies not included|
+|[lua_c_amalgamator_full.c](https://github.com/OUIsolutions/LuaCAmalgamator/releases/download/0.0.3/lua_c_amalgamator_full.c)| the import file for lua_c_amalgamator full|
 
 ### Install
 if you want to install , just type:
