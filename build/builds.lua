@@ -2,9 +2,8 @@
 
 
 function create_start_project()
-    local project = darwin.create_project("lua_silverchain")
-    project.add_lua_code("public_lua_silverchain = {}")
-    project.add_lua_code("private_silver_chain = {}")
+    local project = darwin.create_project("lua_camalgamator")
+    project.add_lua_code("public_lua_c_amalgamator = {}")
     local concat_path = true
     local src_files = darwin.dtw.list_files_recursively("public", concat_path)
     for i = 1, #src_files do
@@ -21,18 +20,18 @@ function generate_full_c()
 
     project.add_c_file("citerop.c", true)
     project.load_lib_from_c(
-        "luaopen_private_silverchain_cinterop",
-        "private_silverchain_cinterop"
+        "luaopen_private_lua_c_amalgamator_cinterop",
+        "private_lua_c_amalgamator_cinterop"
     )
 
     local full_clib = project.generate_c_lib_code({
-        libname = "lua_silverchain",
-        object_export = "public_lua_silverchain",
+        libname = "lua_c_amalgamator",
+        object_export = "public_lua_c_amalgamator",
         include_e_luacembed = false
     })
 
-    full_clib = full_clib:gsub(SILVER_CHAIN_CODE, "#include")
-    darwin.dtw.write_file("release/silverchain_full.c", full_clib)
+    full_clib = full_clib:gsub(CAMALGAMATOR_CODE, "#include")
+    darwin.dtw.write_file("release/lua_c_amalgamator_full.c", full_clib)
 end
 
 function generate_darwin_import()
@@ -45,18 +44,18 @@ function generate_darwin_import()
         return true
     end)
     project.load_lib_from_c(
-        "luaopen_private_silverchain_cinterop",
-        "private_silverchain_cinterop"
+        "luaopen_private_lua_c_amalgamator_cinterop",
+        "private_lua_c_amalgamator_cinterop"
     )
 
     local full_clib = project.generate_c_lib_code({
-        libname = "lua_silverchain",
-        object_export = "public_lua_silverchain",
+        libname = "lua_c_amalgamator",
+        object_export = "public_lua_c_amalgamator",
         include_e_luacembed = false
     })
 
-    full_clib = full_clib:gsub(SILVER_CHAIN_CODE, "#include")
-    darwin.dtw.write_file("release/silverchain_darwin_import.c", full_clib)
+    full_clib = full_clib:gsub(CAMALGAMATOR_CODE, "#include")
+    darwin.dtw.write_file("release/lua_c_amalgamator_darwin_import.c", full_clib)
 end
 
 function generate_darwin_no_dependencie_not_included()
@@ -64,24 +63,24 @@ function generate_darwin_no_dependencie_not_included()
     local project = create_start_project()
 
     project.add_c_file("citerop.c", true, function(import, path)
-        if import == "dependencies/CSilverChainApiNoDependenciesIncluded.h" then
+        if import == "dependencies/CAmalgamatorApiNoDependenciesIncluded.h" then
             return true
         end
         return false
     end)
 
     project.load_lib_from_c(
-        "luaopen_private_silverchain_cinterop",
-        "private_silverchain_cinterop"
+        "luaopen_private_lua_c_amalgamator_cinterop",
+        "private_lua_c_amalgamator_cinterop"
     )
 
     local full_clib = project.generate_c_lib_code({
-        libname = "lua_silverchain",
-        object_export = "public_lua_silverchain",
+        libname = "lua_c_amalgamator",
+        object_export = "public_lua_c_amalgamator",
         include_e_luacembed = false
     })
 
-    full_clib = full_clib:gsub(SILVER_CHAIN_CODE, "#include")
-    darwin.dtw.write_file("release/silverchain_no_dependecie_included.c", full_clib)
+    full_clib = full_clib:gsub(CAMALGAMATOR_CODE, "#include")
+    darwin.dtw.write_file("release/lua_c_amalgamator_dependencie_not_included.c", full_clib)
 end
 

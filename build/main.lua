@@ -1,5 +1,5 @@
-SILVER_CHAIN_CODE = "32342jjressd"
-SILVER_CHAIN_PATH = "dependencies/CSilverChainApiNoDependenciesIncluded.h"
+CAMALGAMATOR_CODE = "32342jjressd"
+CAMALGAMATOR_PATH = "dependencies/CSilverChainApiNoDependenciesIncluded.h"
 
 
 
@@ -9,9 +9,9 @@ function main()
     darwin.dtw.remove_any("release")
 
     --- we must format these , to avoid bugs on include
-    local camalgamator_content = darwin.dtw.load_file(SILVER_CHAIN_PATH)
-    camalgamator_content = camalgamator_content:gsub("#include", SILVER_CHAIN_CODE)
-    darwin.dtw.write_file(SILVER_CHAIN_PATH, camalgamator_content)
+    local camalgamator_content = darwin.dtw.load_file(CAMALGAMATOR_PATH)
+    camalgamator_content = camalgamator_content:gsub("#include", CAMALGAMATOR_CODE)
+    darwin.dtw.write_file(CAMALGAMATOR_PATH, camalgamator_content)
 
     generate_full_c()
     generate_darwin_import()
